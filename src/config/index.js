@@ -7,9 +7,12 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 export default {
+  clientOrigin: process.env.CLIENT_ORIGIN || 'localhost:3000',
   db: {
     url: process.env.DATABASE_URL || 'mongodb://localhost/ow-teamfinder-backend'
   },
-  port: process.env.PORT || 8080,
-  clientOrigin: process.env.CLIENT_ORIGIN || 'localhost:3000'
+  logger: {
+    level: process.env.LOG_LEVEL
+  },
+  port: process.env.PORT || 8080
 };

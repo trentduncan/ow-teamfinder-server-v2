@@ -1,12 +1,13 @@
-import get from 'lodash.get';
-import groupBy from 'lodash.groupby';
-import has from 'lodash.has';
-import isEmpty from 'lodash.isempty';
-import isError from 'lodash.iserror';
-import isFunction from 'lodash.isfunction';
-import keyBy from 'lodash.keyby';
-import omit from 'lodash.omit';
-import orderBy from 'lodash.orderby';
+export const get = require('lodash.get');
+export const groupBy = require('lodash.groupby');
+export const has = require('lodash.has');
+export const isEmpty = require('lodash.isempty');
+export const isError = require('lodash.iserror');
+export const isFunction = require('lodash.isfunction');
+export const keyBy = require('lodash.keyby');
+export const omit = require('lodash.omit');
+export const orderBy = require('lodash.orderby');
+export const stringify = require('json-stringify-safe');
 
 export default {
   get,
@@ -17,5 +18,6 @@ export default {
   isFunction,
   keyBy,
   omit,
-  orderBy
+  orderBy,
+  stringify
 };

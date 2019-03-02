@@ -1,4 +1,4 @@
-import { isError } from './lodash';
+import { isError, stringify } from './lodash';
 
 const ERROR_UNEXPECTED = 'ERROR_UNEXPECTED';
 
@@ -11,7 +11,8 @@ export default class Logger {
   static LEVEL_ERROR = 1;
   static LEVEL_SILENT = 2;
 
-  constructor(level) {
+  constructor({ console, level }) {
+    this._console = console;
     this._level = methods[level] ? level : Logger.LEVEL_TRACE;
   }
 
@@ -25,7 +26,7 @@ export default class Logger {
 
   async log(level, payload, tag) {
     if (this._skip(level)) return;
-    console.log(this._format(level, payload, tag));
+    this._console(this._format(level, payload, tag));
   }
 
   _skip(level) {
@@ -37,7 +38,7 @@ export default class Logger {
   }
 
   _format(level, payload, tag) {
-    return JSON.stringify(
+    return stringify(
       {
         level: methods[level].toUpperCase(),
         timestamp: new Date().toISOString(),

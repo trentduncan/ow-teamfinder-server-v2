@@ -5,7 +5,10 @@ import config from '../config';
 export default {
   connect: () => {
     try {
-      return mongoose.connect(config.db.url, { useNewUrlParser: true });
+      return mongoose.connect(config.db.url, {
+        useNewUrlParser: true,
+        useCreateIndex: true
+      });
     } catch (error) {
       console.error('Mongoose failed to connect');
       console.error(error);

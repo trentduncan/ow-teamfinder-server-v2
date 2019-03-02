@@ -4,6 +4,8 @@ import morgan from 'morgan';
 
 import config from '../config';
 import db from './db';
+import playerRouter from '../routes/playerRouter';
+// import playerController from './playerController';
 
 db.connect();
 
@@ -22,6 +24,8 @@ app.use(
 app.use('/hello', (req, res, next) => {
   res.json(req.body.name);
 });
+
+app.use('/player', playerRouter);
 
 app.use((req, res, next) => {
   const error = new Error('Not Found');
