@@ -2,23 +2,14 @@ import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 
 const playerSchema = new mongoose.Schema({
-  username: { type: String, unique: true, required: true },
+  email: { type: String, unique: true, required: true },
   password: { type: String, required: true },
   skillRating: { type: Number },
   roles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Role' }],
-  heroes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Hero' }],
-  email: { type: String }
+  heroes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Hero' }]
 });
 // use email instead of username and use match: regex for emails
 
-// playerSchema.set('toObject', {
-//   transform: function(doc, ret) {
-//     ret.id = ret._id;
-//     delete ret._id;
-//     delete ret.__v;
-//     delete ret.password;
-//   }
-// });
 playerSchema.methods.serialize = function() {
   return {
     id: this._id,
