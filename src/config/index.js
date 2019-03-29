@@ -7,6 +7,10 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 export default {
+  jwt: {
+    expiry: process.env.JWT_EXPIRY || '1d',
+    secret: process.env.JWT_SECRET || 'test'
+  },
   clientOrigin: process.env.CLIENT_ORIGIN || 'localhost:3000',
   db: {
     url: process.env.DATABASE_URL || 'mongodb://localhost/ow-teamfinder-backend'

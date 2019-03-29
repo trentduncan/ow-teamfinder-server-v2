@@ -4,6 +4,7 @@ import morgan from 'morgan';
 
 import config from '../config';
 import db from './db';
+import authRouter from '../routes/authRouter';
 import playerRouter from '../routes/playerRouter';
 // import playerController from './playerController';
 
@@ -25,6 +26,7 @@ app.use('/hello', (req, res, next) => {
   res.json(req.body.name);
 });
 
+app.use(authRouter);
 app.use('/player', playerRouter);
 
 app.use((req, res, next) => {
